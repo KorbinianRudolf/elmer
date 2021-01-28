@@ -1,0 +1,11 @@
+*.xml
+*.boundary
+*.elements
+*.header
+*.nodes
+*.prof
+*.grd
+*.step
+venv/
+.idea/
+Elmer/
