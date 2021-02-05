@@ -1,9 +1,35 @@
 from PIL import Image
 import numpy as np
+import os
 
 
-url = 'c1.png'
+def rec_search_crop(start_url):
+    """"search all sub folders of the start folder for folders containing png data in a animation folder and crop them"""
+    content = [os.path.join(start_url, o) for o in os.listdir(start_url)]
+    print('Content: ' + str(content))
+    for c in content:
+        if c.endswith('animation'):
+            crop_all(c)
+        elif os.path.isdir(c):
+            rec_search_crop(c)
+
+    print(content)
+
+
+
+def crop_all(url):
+    """crop all images in url and save them in a new made folder"""
+
+    imgs = [o for o in os.listdir(url) if o.endswith('.png')]
+    print('Imgs ' + str(imgs))
+    newpath = '{}\\cropped'.format(url)
+    if not os.path.exists(newpath):
+        os.makedirs(newpath)
+    for img in imgs:
+        crop(os.path.join(url, img)).save('{}\\crpd_{}'.format(newpath, img))
+
 def crop(url):
+    """crops everything unnecessary from an image away"""
     image = Image.open(url)
     image.load()
 
@@ -17,6 +43,9 @@ def crop(url):
 
     return Image.fromarray(image_data_new)
 
-crop(url).save('c1_cropped.png')
 
+base_url = 'E:\\'  # TODO correct URL
+url1 = 'c1.png'
 
+rec_search_crop('..')
+#crop_all('.')
