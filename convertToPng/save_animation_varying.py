@@ -88,7 +88,7 @@ for f in folders:
 	case_t0Display.RescaleTransferFunctionToDataRange(True, False)
 
 	# show color bar/color legend
-	case_t0Display.SetScalarBarVisibility(renderView1, True)
+	case_t0Display.SetScalarBarVisibility(renderView1, False)
 
 	# get color transfer function/color map for 'velocity'
 	velocityLUT = GetColorTransferFunction('velocity')
@@ -107,6 +107,9 @@ for f in folders:
 
 	# Apply a preset using its name. Note this may not work as expected when presets have duplicate names.
 	velocityLUT.ApplyPreset('Grayscale', True)
+
+	# Hide orientation axes
+	renderView1.OrientationAxesVisibility = 0
 
 	# get layout
 	layout1 = GetLayout()
