@@ -75,7 +75,7 @@ ColorBy(case_tDisplay, ('POINTS', 'velocity', 'Magnitude'))
 case_tDisplay.RescaleTransferFunctionToDataRange(True, False)
 
 # show color bar/color legend
-case_tDisplay.SetScalarBarVisibility(renderView1, True)
+case_tDisplay.SetScalarBarVisibility(renderView1, False)
 
 # get color transfer function/color map for 'velocity'
 velocityLUT = GetColorTransferFunction('velocity')
@@ -94,6 +94,9 @@ UpdateScalarBarsComponentTitle(velocityLUT, case_tDisplay)
 
 # Apply a preset using its name. Note this may not work as expected when presets have duplicate names.
 velocityLUT.ApplyPreset('Grayscale', True)
+
+# Hide orientation axes
+renderView1.OrientationAxesVisibility = 0
 
 # get layout
 layout1 = GetLayout()
