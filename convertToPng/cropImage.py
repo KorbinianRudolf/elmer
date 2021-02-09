@@ -46,5 +46,5 @@ def crop(url):
 
 
 if __name__ == '__main__':
-    base_url = 'E:\\Users\\korbi\\Desktop\\Hiwi_Stelle\\projects\\Stanislav Simulations'
+    base_url = '.'  # TODO change appropiatly
     rec_search_crop(base_url)
