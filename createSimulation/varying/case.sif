@@ -2,7 +2,7 @@ Header
   CHECK KEYWORDS Warn
   Mesh DB "." "."
   Include Path ""
-  Results Directory "./velocity4.0"
+  Results Directory ""
 End
 
 Simulation
@@ -14,7 +14,7 @@ Simulation
   Output Intervals = 1
   Timestepping Method = BDF
   BDF Order = 1
-  Timestep intervals = 335
+  Timestep intervals = 1904
   Timestep Sizes = 0.035
   Solver Input File = case.sif
   Post File = case.vtu
@@ -29,10 +29,17 @@ Constants
   Unit Charge = 1.602e-19
 End
 
+Body 1
+  Target Bodies(1) = 1
+  Name = "Body 1"
+  Equation = 1
+  Material = 1
+End
+
 Solver 1
   Equation = Navier-Stokes
-  Procedure = "FlowSolve" "FlowSolver"
   Variable = Flow Solution[Velocity:2 Pressure:1]
+  Procedure = "FlowSolve" "FlowSolver"
   Exec Solver = Always
   Stabilize = True
   Bubbles = False
@@ -62,17 +69,17 @@ Equation 1
 End
 
 Material 1
-  Name = "stanislavMat"
+  Name = "Stanislav"
   Compressibility Model = Incompressible
-  Viscosity = 0.0009
   Density = 0.2
+  Viscosity = 0.0009
 End
 
 Boundary Condition 1
   Target Boundaries(1) = 4 
   Name = "Inlet"
-  Velocity 2 = 0
-  Velocity 1 = 4.0
+  Velocity 2 = 0.0
+  Velocity 1 = 1.5
 End
 
 Boundary Condition 2
